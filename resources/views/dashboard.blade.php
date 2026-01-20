@@ -1,7 +1,22 @@
 <x-layouts::app :title="__('Articles')">
     <div class="flex h-full w-full flex-1 flex-col gap-4 p-4">
+        @if (session('success'))
+            <div class="text-green-600">
+                {{ session('success') }}
+            </div>
+        @endif
+    
+        @if ($errors->any())
+            <div class="text-red-600">
+                <ul class="list-disc list-inside">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="relative h-full flex-1 rounded-xl border p-6">
-            
+
             <div class="flex items-center justify-between mb-8">
                 <h1>Articles</h1>
 

@@ -26,8 +26,8 @@ class ArticleController extends Controller
             'url' => 'required|url',
         ]);
 
-        $request->user()->articles()->create($validated);
-        return redirect()->route('home')->with('success', 'Article created successfully.');
+        $article = $request->user()->articles()->create($validated);
+        return redirect()->route('articles.show', $article)->with('success', 'Article created successfully.');
     }
 
     public function show(Article $article)

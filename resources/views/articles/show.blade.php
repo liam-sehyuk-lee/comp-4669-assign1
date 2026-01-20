@@ -1,5 +1,11 @@
 <x-layouts::app :title="$article->title">
     <div class="flex h-full w-full flex-1 flex-col gap-4 p-4">
+        @if (session('success'))
+            <div class="text-green-600">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <div>
             <a href="{{ route('home') }}">
                 ← Back to Articles
